@@ -42,7 +42,7 @@ document.write(typeof undefined + "<br />")
 
 // Template literals
 
-let fName = 'Sebastien', lName = 'Blais-Fernandez'
+let fName = 'Sebastien ', lName = 'Blais-Fernandez'
 
 document.write(`${fName} ${lName}` + "<br />")
 
@@ -123,6 +123,20 @@ getSumMore(1,2,3,4,5,6,7,8,9)
 let longArr = [12,23,34,45,56,67,78,89,90,56,34,23,46,68,790,456,2]
 getSumMore(...longArr)
 
+// Spread Operator
+// Diconstruct a array or a string into a array
+let params = ['hello', 'world', true, 4]
+let other = [1,2,3, ...params]
+function f (a, b, ...array) {
+  return (a + b) * array.length
+} 
+document.write(`f(10,11, ...array) return : ${f(10,11, ...params)} <br />`)
+
+let str = 'foobar'
+let foobarArray = [...str]
+document.write(`foobarArray : ${foobarArray} <br />`)
+
+
 // Arrow functions
 let getDifference = (num1, num2) => num2 - num1
 
@@ -145,21 +159,162 @@ document.write(`result is ${sumVal} <br />`)
 let evens = valArray.filter( v  => v % 2 == 0 )
 document.write(`evens is ${evens} <br />`)
 
-// Spread Operator
+let doubles = valArray.map( v => v*2)
+document.write(`doubles is ${doubles} <br />`)
+
+// passing a function into a map()
+let multiplyBeThree = (item) => item*3
+
+let triple = valArray.map(multiplyBeThree)
+document.write(`triple is ${triple} <br />`)
+
+
+// ---------- OBJECTS ----------
+
+function createAnimal(name, owner){
+  return {
+    // Properties
+    name,
+    owner,
+    // Create a method
+    getInfo(){
+      return `${this.name} is owned by ${this.owner}`
+    },
+    // Objects can contain other objects
+  address: {
+    street: '123 Main St',
+    city: 'Pittsburgh'
+  }
+  }
+}
+
+let spot = createAnimal('Spot', fName + lName)
+
+document.write(`${spot.getInfo()}<br />`)
+
+document.write(`${spot.name} is at ${spot.address.street}<br />`)
+
+document.write(`${Object.getOwnPropertyNames(spot).join(" ")} <br />`)
+
+// Storing Value from Object with destructoring
+let { name, owner } = spot
+document.write(`Name : ${name}<br />`)
+
+// Get the inner class value
+let { address } = spot
+document.write(`Address : ${address.street}<br />`)
+
+// You can destructor arrays as well
+let favNums = [2.718, .5772, 4.6692]
+let [,,chaos] = favNums
+document.write(`Chaos : ${chaos}<br />`)
+
+// Rest can be use to grab specific index item in a array
+let [, ...last2] = favNums
+document.write(`2nd Num : ${last2[0]}<br />`)
+
+
+// ---------- CLASSES ----------
+
+class Mammal{
+  constructor(name){
+    this._name = name
+  } 
+  // Getter
+  get name() {
+    return this._name
+  } 
+  // Setter
+  set name(name){
+    this._name = name
+  } 
+  // Static Mammal creator
+  static makeMammal(name){
+    return new Mammal(name)
+  } 
+  getInfo(){
+    return `${this.name} is a mammal`
+  } 
+}
+
+// Create an object
+let monkey = new Mammal("Fred")
+
+// Change name
+monkey.name = "Mark"
+
+// Call getter
+document.write(`Mammal : ${monkey.name}<br />`)
+
+// Create Mammal using static function
+let chipmunk = Mammal.makeMammal("Chipper")
+document.write(`Mammal 2 : ${chipmunk.name}<br />`)
+
+// You can inherit properties and methods with extends
+class Marsupial extends Mammal{
+  constructor(name, hasPouch){
+    // Call the super class constructor
+    super(name)
+    this._hasPouch = hasPouch
+  } 
+  get hasPouch() {
+    return this._hasPouch
+  } 
+  set hasPouch(hasPouch){
+    this._hasPouch = hasPouch
+  } 
+  // You can override methods
+  getInfo(){
+    return `${this.name} is a marsupial`
+  } 
+}
+
+let kangaroo = new Marsupial("Paul", true)
+document.write(`It is ${kangaroo.hasPouch} that ${kangaroo.name} has a pouch<br />`)
+
+// Test overridden method
+document.write(`${chipmunk.getInfo()}<br />`)
+document.write(`${kangaroo.getInfo()}<br />`)
+
+// You can dynamically inherit from Classes
+function getClass(classType){
+  if (classType == 1) {
+    return Mammal
+  } else {
+    return Marsupial
+  }
+} 
+class Koala extends getClass(2){
+  constructor(name){
+    super(name)
+  }
+}
+
+let carl = new Koala("Carl")
+document.write(`${carl.getInfo()}<br />`)
+
+// ---------- SYMBOLS ----------
 
 
 
+let capital = Symbol('The main city of each country')
 
+let ontario = {}
+ontario[capital] = 'Ottawa'
+document.write(`Capital of Canada is ${ontario[capital]}<br />`)
 
+document.write(`Symbol Capital => ${capital.toString()}<br />`)
 
+let employNum = Symbol.for("Employee Number")
 
+let bobSmith = {}
+bobSmith[employNum] = 10
 
+let sam = {}
+sam[employNum] = 23
 
-
-
-
-
-
+document.write(`Bob emplNum is : ${bobSmith[employNum]}<br />`)
+document.write(`Sam emplNum is : ${sam[employNum]}<br />`)
 
 
 
