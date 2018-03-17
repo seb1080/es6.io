@@ -169,7 +169,111 @@ let triple = valArray.map(multiplyBeThree)
 document.write(`triple is ${triple} <br />`)
 
 
+// ---------- Array ------------
+document.write(`<br /> ---------- Array ------------`)
+document.write(`<br />`)
+
+let arr1 = Array.of(1,2,3,4), arr2 = Array.from('longString')
+
+let arrDouble = Array.from(arr1, (v) => v * 2)
+
+document.write(`<br /> arrDouble is ${arrDouble}  <br />`)
+
+for(let val of arrDouble){
+document.write(`Array val is ${val}  <br />`)
+}
+
+// ---------- Set ------------
+//  Set objects let you store unique values a any type
+
+document.write(`<br /> ---------- Set ------------`)
+document.write(`<br />`)
+
+let randSet = new Set()
+randSet.add(10)
+randSet.add('word')
+
+// check if set contain the number 10
+document.write(`Has 10 :  ${randSet.has(10)}  <br />`)
+
+// Get size of Set
+document.write(`Set Size :  ${randSet.size}  <br />`)
+
+// Delete number 10 from set
+randSet.delete(10)
+
+// ---------- Map ------------
+document.write(`<br /> ---------- Map ------------`)
+document.write(`<br />`)
+
+let randMap = new Map()
+
+randMap.set('key1', 'randVal1')
+randMap.set('key2', 'randVal2')
+randMap.set('key3', 'randVal3')
+randMap.set('key4', 10)
+
+
+// Get map size
+document.write(`get randmMap Size :  ${randMap.size}  <br />`)
+
+// Get map value
+document.write(`key1 :  ${randMap.get('key1')}  <br />`)
+document.write(`key4 :  ${randMap.get('key4')}  <br />`)
+
+// Iterate Map
+
+randMap.forEach((val, key) => {
+  document.write(`${key} : ${val} <br />`)
+})
+
+// ---------- Promises ------------
+document.write(`<br /> ---------- Promises ------------`)
+document.write(`<br />`)
+// Promises define code that is to be executed later,
+// promises either succed or fail once
+// They either are fulfilled, rejected, pending or settled
+
+let p1 = Promise.resolve('Resolve promise p1')
+
+p1.then( (res) => document.write( ` ${res} `) )
+
+
+// let p2 = new Promise(  (resolve, reject) => {
+//   setTimeout( () => resolve('Resolve Me'), 2000)
+// }) 
+// p2.then(res => document.write(` ${res} <br />`))
+
+let p3 = new Promise(function(resolve, reject){
+  if (randVal == 6){
+    resolve("Good Value");
+  } else {
+    reject("Bad Value");
+  }
+})
+
+p3.then((val) => document.write(`${val}<br />`),
+        (err) => document.write(`${err}<br />`))
+
+// A catch can be add th handle erros
+let p4 = new Promise((resolve, reject) => {
+  if (randVal <= 17){
+    throw new Error("Can't Vote"); // Same as a Reject
+  } else {
+    resolve("Can Vote");
+  }
+})
+  
+p4.then((val) => document.write(`${val}<br />`))
+  .catch((err) => document.write(`${err.message}<br />`))
+
+
+
+
+document.write(`<br />`)
 // ---------- OBJECTS ----------
+document.write(`<br /> ---------- Object ------------`)
+document.write(`<br />`)
 
 function createAnimal(name, owner){
   return {
@@ -294,8 +398,6 @@ let carl = new Koala("Carl")
 document.write(`${carl.getInfo()}<br />`)
 
 // ---------- SYMBOLS ----------
-
-
 
 let capital = Symbol('The main city of each country')
 
