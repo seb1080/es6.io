@@ -14,7 +14,6 @@ var : The scope of var is the enclosing function scope or the global scope.
       var can be update.
 
 ```javascript
-
 var width = 10
 var width = 30 // var can be reassign
     width = 23 // var can be update
@@ -34,7 +33,6 @@ let : can be update, mutable
 const : can not be update, mutable
 
 ```javascript
-
 let width = 12
 let width = 34 // error can't be reassign
 
@@ -52,3 +50,35 @@ if(true) {
 * don't use var
 
 # Function Improvements
+
+## Arrow functions
+
+ref: (https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/)
+
+  Arrow functions are anonymous function that don't haveit own this, arguments, super, new.target.
+
+```javascript
+
+// Implicite return
+const arr2 = numbers.map(number => `${number} arr2`)
+console.log(arr2)
+
+// Explicite return
+const arr3 = numbers.map(number => { return `${number} arr3`})
+console.log(arr3)
+
+// No Argument
+const arr4 = numbers.map( () => { return ` arr4`})
+console.log(arr4)
+
+  // Implicite Object return
+const race = `100m Dash`
+const winners = ['seb', 'seb1080', 'paco']
+// The () of the return 
+const win = winners.map( (winner, i) =>  ({name:winner, race:race, place: i}))
+// so cool
+console.table(win)
+
+```
+
+// Tu es rendu a la video : Arrow Functions and `this` module 2

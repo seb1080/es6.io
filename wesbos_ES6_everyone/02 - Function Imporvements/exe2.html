@@ -2,37 +2,41 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Exercices_1</title>
+  <title>Exercices_2</title>
 </head>
 <body>
 <script>
-  {
-    const name = 'wes'
-    console.log(name)
-  }
+  const numbers = ['one', 'two', 'three']
 
-  // for(let i = 0; i < 10; i++) {
-  //   console.log(i);
-  //   setTimeout(function() {
-  //     console.log('The number is ' + i);
-  //   },1000);
-  // }
+  const arr1 = numbers.map(function(number){
+    return `${number} arr1`
+  })
+  console.log(arr1)
+  
 
-</script>
+  // Implicite return
+  const arr2 = numbers.map(number => `${number} arr2`)
+  console.log(arr2)
+
+  // Explicite return
+  const arr3 = numbers.map(number =>  { return `${number} arr3`})
+  console.log(arr3)
+
+  // No Argument
+  const arr4 = numbers.map( () =>  { return ` arr4`})
+  console.log(arr4)
+
+  </script>
 
 <script>
 
-function setWidth() {
-    var width = 100;
-    console.log(width);
-  }
-  setWidth()
-
-  var age = 100
-  if(age > 12) {
-    var dogYears = age * 7;
-    console.log(`You are ${dogYears} dog years old!`);
-  }
+  // Implicite Object return
+const race = `100m Dash`
+const winners = ['seb', 'seb1080', 'paco']
+// The () of the return 
+const win = winners.map( (winner, i) =>  ({name:winner, race:race, place: i}))
+// so cool
+console.table(win)
 
 
 </script>
