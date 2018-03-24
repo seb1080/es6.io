@@ -5,7 +5,7 @@ Ref : [wesbos](https://courses.wesbos.com/account/)
       [MDN Doc](https://developer.mozilla.org)
 
 
-#  New Variables
+# Module_1  New Variables
 
 ## Before 
 
@@ -48,7 +48,7 @@ if(true) {
 * use  `let` if rebinding is needed
 * don't use var
 
-# Function Improvements
+# Module_2 Function Improvements
 
 ## Arrow functions
 
@@ -90,7 +90,7 @@ The arrow  functions should not be use for :
 
 ```javascript
 // To handle click event
-  button.addEventListener('click', function() {
+  button.# Templating StringaddEventListener('click', function() {
     console.log(this)
     this.classList.toggle('on')
   })
@@ -141,7 +141,7 @@ function calculateBill(total, tax =0.13, tip=0.15) {
 }
 ```
 
-# Templating String
+# Module_3 Templating String
 
 ```javascript
 const string = `string`
@@ -172,7 +172,7 @@ const dogs = [
 ### Tagging Template string
 
 ```javascript
-function hightlight(strings, ...values) {
+function tagging(strings, ...values) {
   let str = ``
   strings.forEach((string, i) => {
     str += `${string} <span contenteditable class="h1">
@@ -182,9 +182,67 @@ function hightlight(strings, ...values) {
   return str
 }
 const name = `Ludo`, age = 8 
-const sentence = hightlight`My dog's name is ${name} and he is ${age} year old`
+const sentence = tagging`My dog's name is ${name} and he is ${age} year old`
 document.body.innerHTML =  sentence
 ```
+
+
+# Module_4 Additional String Imporvements
+
+```javascript
+const str = `newString`
+
+str.startsWith('new') // true
+
+str.endsWith('ing') // true
+
+str.includes('Str') // true
+
+str.repeat(3) // newStringnewStringnewString
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Glossary
 
