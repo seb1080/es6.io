@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Exercices_1</title>
+<style>
+  .h1 {
+    background: lightblue;
+  }
+</style>
+</head>
+<body>
+<script>
+    const dogs = [
+    { name: 'Snickers', age: 2 },
+    { name: 'Hugo', age: 8 },
+    { name: 'Sunny', age: 1 },
+    { name: 'patou', age: 7 },
+    { name: 'Croby', age: 6 },
+    { name: 'Snopy' }
+  ]
+
+  const markup = 
+  `<ul class="dogs">
+    ${dogs.map( dog =>
+
+    `<li>${dog.name}
+
+    ${dog.age ? `is ${dog.name} year old`:'have no age'}
+    
+    </li>`).join('')}
+  </ul>`
+  // document.body.innerHTML = markup
+
+</script>
+
+
+<!-- <script>
+
+  function hightlight(strings, ...values) {
+  debugger
+}
+const name = `Ludo`, age = 8 
+const sentence = hightlight`My dog's name is ${name} and he is ${age} year old`
+
+console.log(sentence)
+
+</script> -->
+
+
+<script>
+
+// function hightlight(strings, ...values) {
+//   let str = ``
+//   strings.forEach( (string, i) => {
+//     str += string + (values[i] || '')
+//   })
+//   return str
+// }
+// const name = `Ludo`, age = 8 
+// const sentence = hightlight`My dog's name is ${name} and he is ${age} year old`
+// console.log(sentence)
+</script>
+
+
+<script>
+
+function hightlight(strings, ...values) {
+  // insert span tag at the string === ${values[i]} of the template string
+  let str = ``
+  strings.forEach((string, i) => {
+    str += `${string} <span contenteditable class="h1">
+            ${values[i] || ''} </span>`
+  })
+  return str
+}
+const name = `Ludo`, age = 8 
+const sentence = hightlight`My dog's name is ${name} and he is ${age} year old`
+document.body.innerHTML =  sentence
+
+</script>
+
+
+
+</body>
+</html>

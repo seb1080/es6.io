@@ -80,7 +80,7 @@ const win = winners.map( (winner, i) =>  ({name:winner, race:race, place: i}))
 console.table(win)
 ```
 
-### this, arrow functions 
+### This, arrow functions 
 
   Arrow functions inherit the this context from the parent context.
 
@@ -133,8 +133,6 @@ The arrow  functions should not be use for :
     console.log(arguments)
   }
 ```
-
-
 ### Default argument
 
 ```javascript
@@ -143,22 +141,65 @@ function calculateBill(total, tax =0.13, tip=0.15) {
 }
 ```
 
-
-
-
 # Templating String
 
+```javascript
+const string = `string`
 
+const temString = ` template ${string} 
+                    are awesome`
+// Template string is great for formating HTML markup
+const dogs = [
+    { name: 'Snickers', age: 2 },
+    { name: 'Hugo', age: 8 },
+    { name: 'Croby', age: 6 },
+    { name: 'Snopy' }
+  ]
 
+  const markup = 
+  `<ul class="dogs">
+    ${dogs.map( dog =>
 
+    `<li>${dog.name}
 
+    ${dog.age ? `is ${dog.name} year old`:'have no age'}
+    
+    </li>`).join('')}
+  </ul>`
+  document.body.innerHTML = markup
+```
+
+### Tagging Template string
+
+```javascript
+function hightlight(strings, ...values) {
+  let str = ``
+  strings.forEach((string, i) => {
+    str += `${string} <span contenteditable class="h1">
+            ${values[i] || ''}
+            </>`
+  })
+  return str
+}
+const name = `Ludo`, age = 8 
+const sentence = hightlight`My dog's name is ${name} and he is ${age} year old`
+document.body.innerHTML =  sentence
+```
 
 # Glossary
+
+```javascript
+
+```
 
 arguments : Aguments is Array-like object corresponding to the arguments passed to a function.
 
 arrow function : () => {}
 
 const : 
+
+debugger : The debugger statement invokes any available debugging functionality, such
+          as setting a breakpoint. If no debugging functionality is available, this
+          statement has no effect.
 
 let :  
