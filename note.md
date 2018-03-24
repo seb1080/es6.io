@@ -1,10 +1,9 @@
-
-
-Review of the ES for Everyone
+# Review of the ES for Everyone
 
 Ref : [wesbos](https://courses.wesbos.com/account/)
 
       [MDN Doc](https://developer.mozilla.org)
+
 
 #  New Variables
 
@@ -55,7 +54,8 @@ if(true) {
 
 ref: (https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/)
 
-  Arrow functions are anonymous function that don't haveit own this, arguments, super, new.target.
+  Arrow functions are anonymous function that don't have it own this, arguments, super, new.target.
+
 
 ```javascript
 
@@ -78,7 +78,87 @@ const winners = ['seb', 'seb1080', 'paco']
 const win = winners.map( (winner, i) =>  ({name:winner, race:race, place: i}))
 // so cool
 console.table(win)
-
 ```
 
-// Tu es rendu a la video : Arrow Functions and `this` module 2
+### this, arrow functions 
+
+  Arrow functions inherit the this context from the parent context.
+
+  Arrow functions don't access the arguments object. 
+
+The arrow  functions should not be use for : 
+
+```javascript
+// To handle click event
+  button.addEventListener('click', function() {
+    console.log(this)
+    this.classList.toggle('on')
+  })
+
+// Don't use () => {} to bind to an object
+  const person = {
+    points: 23,
+    score() {
+      console.log(this) // this don't work because this reference to the window()
+      this.points++
+    }
+  }
+
+  // Don't use () => {} has a constructor
+  class Car {
+    constructor(make, colour) {
+      this.make = make
+      this.colour = colour
+    }
+  }
+  // () => {} can be use to add a method to a class
+  Car.prototype.summarize = function() {
+    return `This car is a ${this.make} in the colour ${this.colour}`;
+  }
+
+  // Arrow functions don't access the arguments object.
+  const orderChildren = function() {
+    const children = Array.from(arguments)
+    return children.map((child, i) => {
+      return `${child} was child #${i + 1}`
+    })
+    console.log(arguments)
+  }
+  // not working 
+  const orderChildren2 = () => {
+    const children = Array.from(arguments)
+    return children.map((child, i) => {
+      return `${child} was child #${i + 1}`
+    })
+    console.log(arguments)
+  }
+```
+
+
+### Default argument
+
+```javascript
+function calculateBill(total, tax =0.13, tip=0.15) {
+  return total * tax + total * tip 
+}
+```
+
+
+
+
+# Templating String
+
+
+
+
+
+
+# Glossary
+
+arguments : Aguments is Array-like object corresponding to the arguments passed to a function.
+
+arrow function : () => {}
+
+const : 
+
+let :  
