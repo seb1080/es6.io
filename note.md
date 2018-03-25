@@ -203,43 +203,95 @@ str.repeat(3) // newStringnewStringnewString
 
 # Module_5 Destructuring
 
+
+Destructuring allow to extract properties, key from a object, map, set into a variable.
+
+## Destructuring Object
+
 ```javascript
 
+const object = {
+  prop1: 'Seb',
+  prop2: 'Blais'
+}
+
+const { prop1, prop2 } =  object // Desstruring
+
+
+const seb = {
+    first: 'Seb',
+    last: 'Blais',
+    links: {
+      social: {
+        twitter: 'https://twitter.com/seb',
+        facebook: 'https://facebook.com/seb.developer',
+      },
+      web: {
+        blog: 'https://seb.com'
+      }
+    }
+  };
+
+                  // rename facebook for fb
+  const { twitter, facebook: fb } = seb.links.social
+
+  // Create a object
+  const settings = { 
+                    width: 300, 
+                    color: 'black'
+                  }
+
+// Set default value if the settings object don't have the prop
+  const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings;
+
+  // Object Destructuring with variable renaming & default values
+  const { w: width = 400, h: height = 500 } = { w: 800 }
 ```
 
+## Destructuring Array
+
+```javascript
+
+const arr = ['Seb Blais', 233223, 'seb.com']
+
+const [name, id, website] = arr; // Destructuring Array
+
+const data = 'aaaaaaaaaa,bbbbbbbbb,cccccccc,ddd'
+
+const [a,b,c,d] = data.splti(',') // Destruc String into a Array
+
+const team = ['Seb', 'Marco', 'Mick', 'Gab', 'Frank']
+
+const [capitain, assistant, ...marins] = team // Rest Operator
+```
+
+## Swapping variables
+
+```javascript
+
+let var1 = 'variable1', var2 = 'variable1'
+
+[var1, var2] = [var2, var1] // Swapping variables
+```
+
+## Destructuring Functions
+
+```javascript
+
+function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
+    return total + (tip * total) + (tax * total);
+  }
+  
+// Arguments can't be pass in a different oroder
+const bill = tipCalc({ tip: 0.20, total: 200 })
+```
+
+# Module_6 Iterables & Looping
+
+```javascript
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
