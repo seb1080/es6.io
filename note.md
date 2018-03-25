@@ -113,7 +113,7 @@ The arrow  functions should not be use for :
   }
   // () => {} can be use to add a method to a class
   Car.prototype.summarize = function() {
-    return `This car is a ${this.make} in the colour ${this.colour}`;
+    return `This car is a ${this.make} in the colour ${this.colour}`
   }
 
   // Arrow functions don't access the arguments object.
@@ -230,7 +230,7 @@ const seb = {
         blog: 'https://seb.com'
       }
     }
-  };
+  }
 
                   // rename facebook for fb
   const { twitter, facebook: fb } = seb.links.social
@@ -242,7 +242,7 @@ const seb = {
                   }
 
 // Set default value if the settings object don't have the prop
-  const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings;
+  const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings
 
   // Object Destructuring with variable renaming & default values
   const { w: width = 400, h: height = 500 } = { w: 800 }
@@ -288,13 +288,106 @@ const bill = tipCalc({ tip: 0.20, total: 200 })
 
 # Module_6 Iterables & Looping
 
+## Existing Loopin in javascript
+
 ```javascript
+
+const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib']
+
+// Before ES6
+// Confusing syntax
+for(let i =0; i< cuts.length i++){
+  console.log(cuts[i])
+}
+// Can't be abord the loop, can't use rthe break keyword
+cuts.forEach( cut => {
+  console.log(cut)
+})
+// loop over the prototype
+for(let cut in cuts) {
+  console.log(cuts[cut])
+}
+// New ES6 for looping
+for(const cut of cuts){
+  // can be break
+  if(cut === 'Brisket') {
+    continue
+  }
+  console.log(cut)
+} 
+
+// .entries() return a [key, value] 
+for(const cut of cuts){
+  // cut can be descructruct into a array
+  if(const [i ,cut] of cuts.entries()) {
+    console.log(` ${} is the ${i + 1}`)
+  }
+}
+```
+
+# Module_7 An Array of Array Improvements
+
+```javascript
+
+// Array.from()
+const nodeList = document.querySelectorAll('.items p')
+const itemsArray = Array.from(nodeList, item => {
+  return item.textContent. // map() can by pass a arg. to .from()
+})
+
+//Array.of()
+const str = `item1,item2,item3,item4,item5`
+
+const newArr = Array.of(str.split(','))
+
+// Array.find()
+const posts = [
+  {
+    "code":"BAcyDyQwcXX",
+    "caption":"Lunch #hamont",
+    "likes":56,
+    "id":"1161022966406956503"
+  },
+  {
+    "code":"BAcJeJrQca9",
+    "caption":"Snow! ⛄️🌨❄️ #lifewithsnickers",
+    "likes":59,
+    "id":"1160844458347054781",
+  },
+  {
+    "code":"BAF_KY4wcRY",
+    "caption":"Cleaned my office and mounted my recording gear overhead. Stoked for 2016!",
+    "likes":79,
+    "id":"1154606670337393752",
+  }
+]
+
+const post  = posts.find(p => ( p.code === `BAF_KY4wcRY`))
+
+//Array.findIndex(), return the first index of the element that respect the function condition
+const postIndex = posts.findIndex( p => p.likes > 57 )
+
+// Array.some()
+const ages = [12,11,13,19]
+
+let major = ages.some(age => (age >= 18) ) // true
+let allMajor = ages.every(age => (age >= 18) ) // false
+```
+
+# Module_8 ...Spread And ..Rest
+
+...Spread syntax allows an iterable to be expendanded where zero or more arguments are expected
+
+```javascript
+
+  const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian']
+  const specialty = ['Meatzza', 'Spicy Mama', 'Margherita']
+
+  const pizzas = [...featured, 'veg', ...specialty]
+  const fridayPizzas = [...pizzas]
 
 
 ```
-
-
-
 
 
 
@@ -311,10 +404,25 @@ arguments : Aguments is Array-like object corresponding to the arguments passed 
 
 arrow function : () => {}
 
+Array.from() : The Array.from() method creates a new Array instance from an array-like or iterable object.
+
+Array.find() : The find() method returns the value of the first element in the array that satisfies the provided testing function, otherwise undefined is returned.
+
+
+Array.findIndex() : The findIndex() method returns the index of the first element in the array that satisfies the provided testing function, otherwise -1 is returned.
+
+Array.of() : The Array.of() method creates a new Array instance with a variable number of arguments, regardless of number or type of the arguments.
+
+
 const : 
 
 debugger : The debugger statement invokes any available debugging functionality, such
           as setting a breakpoint. If no debugging functionality is available, this
           statement has no effect.
+
+
+entries() : Array.prototype.entries() : The entries() method returns a new Array
+            Iterator object that contains the key/value pairs for each index in the array.
+
 
 let :  

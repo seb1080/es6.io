@@ -30,7 +30,14 @@
   <h2 class="jump">SPREADS!</h2>
 
 <script>
-  
+
+let jump = document.querySelector('.jump').innerHTML
+const arr  = [...jump].map( c => ( `<span>${c}</span>`))
+
+let h2 = document.getElementsByTagName('h2')
+h2.insertAdjacentHTML('afterend', '<div>Test</div>')
+
+
 </script>
 </body>
 </html>
