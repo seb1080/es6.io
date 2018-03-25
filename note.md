@@ -186,7 +186,6 @@ const sentence = tagging`My dog's name is ${name} and he is ${age} year old`
 document.body.innerHTML =  sentence
 ```
 
-
 # Module_4 Additional String Imporvements
 
 ```javascript
@@ -201,6 +200,12 @@ str.includes('Str') // true
 str.repeat(3) // newStringnewStringnewString
 ```
 
+
+# Module_5 Destructuring
+
+```javascript
+
+```
 
 
 
