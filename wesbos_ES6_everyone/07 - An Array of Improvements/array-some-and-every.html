@@ -5,6 +5,10 @@
   <title>Array .some() and .every()</title>
 </head>
 <body>
+
+  <h1> Hello World</h1>
+
+
 <script>
   const ages = [32, 15, 19, 12];
 
@@ -14,7 +18,18 @@
 
   // 🍻 is everyone old enough to drink?
   const allOldEnough = ages.every(age => age >= 19);
-  console.log(allOldEnough);
+  console.log(allOldEnough)
+
+
+
+    const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian']
+  const specialty = ['Meatzza', 'Spicy Mama', 'Margherita']
+  const friends = ['friend1','friend2','friend3']
+
+  const pizzas = [...featured, 'veg', ...specialty]
+  const fridayPizzas = [...pizzas]
+
+  const partyMixt = [...featured, ...friends, ...specialty]
 
 
 </script>

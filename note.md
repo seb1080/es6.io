@@ -376,22 +376,71 @@ let allMajor = ages.every(age => (age >= 18) ) // false
 
 # Module_8 ...Spread And ..Rest
 
-...Spread syntax allows an iterable to be expendanded where zero or more arguments are expected
+...Spread syntax allows an iterable to be expendanded where zero or more arguments are expected. It will apply a array as a individual elements.
 
 ```javascript
 
   const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian']
   const specialty = ['Meatzza', 'Spicy Mama', 'Margherita']
+  const friends = ['friend1','friend2','friend3']
 
   const pizzas = [...featured, 'veg', ...specialty]
   const fridayPizzas = [...pizzas]
 
+  const partyMixt = [...featured, ...firends, ...specialty]
 
+
+  const people = Array.from('nodeList') // Convert arrayList into array
+
+    const deepDish = {
+    pizzaName: 'Deep Dish',
+    size: 'Medium',
+    ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
+  };
+
+  const arr = ['Milk', 'Flour', ...deepDish.ingredients]
+  // Create a new Array 'arr' not the reference to deepDish.ingredients
 ```
 
+## The ...Rest Param
+
+  The rest parameter allows us to represent an indefinite number of arguments as an array.
 
 
+  ```javascript
+                              // take amounts has a array
+function  calCurrency(rate, ...amounts){
+  return amounts.map( amount => amount * rate)
+}
+  ```
+# Module_9 Object Literal Upgrades
 
+
+```javascript
+
+const fName = 'Seb', lName = 'Blais', age = 11, job = `Web Dev`
+
+const person = { fName, lName, age, job} // Object Literal,
+                // don't need to specify the name of the property
+console.log(person)
+const modal = {
+  create() {  // same as create: function() {}
+  },
+  open: function() {}
+}
+
+const key = 'superLongPropertyName'
+const tShirt = {
+  [key]: value,
+  [`${key} + constructor`]: function() {},
+  [`${key} + update`]: value
+}
+// or
+const pants = {}
+pants[key]: value
+
+
+```
 
 
 # Glossary
