@@ -415,7 +415,6 @@ function  calCurrency(rate, ...amounts){
   ```
 # Module_9 Object Literal Upgrades
 
-
 ```javascript
 
 const fName = 'Seb', lName = 'Blais', age = 11, job = `Web Dev`
@@ -438,9 +437,43 @@ const tShirt = {
 // or
 const pants = {}
 pants[key]: value
+```
 
+# Module_10 Promises
+
+The Promises object represents the eventual completion (or failure) of an
+asynchronous operation, and its resulting value. 
+
+```javascript
+
+// Fetching data using fetch that implement a Promise
+const mtlwifi_bornes = `http://donnees.ville.montreal.qc.ca/dataset/08f12925-c6b2-405f-bd01-744674d97bff/resource/11860f23-30c9-4221-ae00-a39af4684210/download/mtlwifi_bornes.geojson`
+const response = fetch(mtlwifi_bornes)
+
+response.then(data => data.json())
+        .then(data => { console.log(data) })
+        .catch((err) => {
+          console.error(err)
+  })
+
+// Build my own Promises
+const p = new Promise((resolve, reject) => {
+  // resolve(`Seb is Cool`)
+  setTimeout(() => {
+    reject(Error (`Err Seb is not that Cool`))
+  }, 1000)
+}) 
+p.then(data => {
+    console.log(data)
+}).catch( err => {
+    console.error(err)
+})
+
+// 
 
 ```
+# Module_11 
+
 
 
 # Glossary

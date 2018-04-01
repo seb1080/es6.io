@@ -6,14 +6,17 @@
 </head>
 <body>
 <script>
-const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
 
-postsPromise
-  .then(data => data.json())
-  .then(data => { console.log(data) })
-  .catch((err) => {
-    console.error(err);
+const mtlwifi_bornes = `http://donnees.ville.montreal.qc.ca/dataset/08f12925-c6b2-405f-bd01-744674d97bff/resource/11860f23-30c9-4221-ae00-a39af4684210/download/mtlwifi_bornes.geojson`
+const response = fetch(mtlwifi_bornes)
+
+response.then(data => data.json())
+        .then(data => { console.log(data) })
+        .catch((err) => {
+          console.error(err)
   })
+
+
 
 </script>
 </body>
