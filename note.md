@@ -232,7 +232,7 @@ const seb = {
     }
   }
 
-                  // rename facebook for fb
+    // rename facebook for fb
   const { twitter, facebook: fb } = seb.links.social
 
   // Create a object
@@ -497,6 +497,30 @@ p.then(data => {
     console.error(err)
 })
 ```
+
+Promise.all(iterable) method returns a single Promise that resolve when all of the promises in the iterable argument have resolved or when the iterable argument contains no promises. 
+
+```javascript
+const p1 = new Promise((resolve) => { 
+    setTimeout( () => { 
+      resolve( { temp: 20, location: `Montreal` } )
+    }, 2000)
+})
+const p2 = new Promise((resolve) => { 
+    setTimeout( () => { 
+      resolve( { text: `What a nice day`, location: `Montreal` } )
+    }, 500)
+})
+
+Promise.all([p1,p2]).then( responses => {
+  const [wheater, tweet] = responses
+  console.log( `responses : `, wheater, responses, tweet)
+})
+
+```
+
+
+
 # Module_11 
 
 

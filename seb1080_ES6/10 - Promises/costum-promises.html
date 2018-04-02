@@ -21,7 +21,11 @@ async function main() {
   // Hydratation of a specific police Station for all police Areas
   const policeStationId = 3
   let hydratedPoliceStation = {}
-  await hydratePoliceStation(policeStationId, policeStations, policeAreas).then( newDataset => hydratedPoliceStation = newDataset)
+  await hydratePoliceStation(policeStationId, policeStations, policeAreas)
+          .then( newDataset => hydratedPoliceStation = newDataset)
+          .catch(error => { 
+            console.error( error)
+          })
 
   console.log(hydratedPoliceStation)
   
