@@ -14,17 +14,17 @@ async function main() {
   // ref : http://donnees.ville.montreal.qc.ca/dataset/carte-postes-quartier
   // ref : http://donnees.ville.montreal.qc.ca/dataset/limites-pdq-spvm
   
-  console.log(`policeStation : `, policeStations)
-  console.log(`policeArea : `, policeAreas)
+  console.log(`policeStations : `, policeStations)
+  console.log(`policeAreas : `, policeAreas)
   
 
-  // Hydratation of the 2 datasets
+  // Hydratation of a specific police Station for all police Areas
+  const policeStationId = 3
+  let hydratedPoliceStation = {}
+  await hydratePoliceStation(policeStationId, policeStations, policeAreas).then( newDataset => hydratedPoliceStation = newDataset)
 
-
-
-
-
-
+  console.log(hydratedPoliceStation)
+  
 
 // Functions
 async function fetchURl(url) {
@@ -39,19 +39,42 @@ async function fetchURl(url) {
 
 
 // the goal is to include the police Station into the policeArea dataset
-// hydratePoliceData(policeStation, policeArea) {
-//   return new Promise(resolve, reject) => {
-//     const policeSationDetails = policeArea.features.find( area => {
-//       area.properties.No_PDQ === policeStation.features.properties.DESC_LIEU.split(' ')
-//     })
-//   }
-// }
 
+
+function hydratePoliceStation(policeStationId, policeStations, policeAreas) {
+  return new Promise( (resolve, reject) => {
+    
+    const policeSationDetails = policeStations.features.find( station => getStationId(station.properties.DESC_LIEU) === policeStationId )
+    
+    if (policeSationDetails) {
+        const index = policeAreas.features.findIndex( area => area.properties.No_PDQ === policeStationId)       
+        policeAreas.features[index].properties[`Station_Details`] = policeSationDetails
+      resolve(policeAreas)
+    } else {
+      reject(Error(`The police Station Id is not contain inside the police Station Area`))
+    }
+  })
+}
+
+function getStationId(desc_lieu) {
+  // return Station Id as a Number
+  try {
+    let array = desc_lieu.split(' ')
+    return parseInt(array[array.length - 1])
+  } catch (e) {
+    console.error(Error('The getStation Id could not resolve : '), e.message)
+  }
+}
 
 }
 main()
 
 
+
+  // let descLieu = []
+  // policeStations.features.forEach(element => {
+  //     descLieu.push( getStationId(element.properties.DESC_LIEU) )
+  // })
 
 
 
