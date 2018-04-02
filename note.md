@@ -436,46 +436,66 @@ const value = {}
 const tShirt = {
   // Computed property names
   [key]: `value`,
-  [`${key} + constructor`]: function() {},
-  [`${key} + update`]: value
+  [`${key}constructor`]: function() {},
+  [`${key}update`]: value
 }
-// or
+// or bind the key/value pair out side of the Object definition
 const pants = {}
 pants[key]: value
+
+const keys = ['size', 'color', 'weight']
+const values = ['medium', 'grey', 70]
+
+const shirt = {
+  [keys.shift()]: values.shift(),
+  [keys.shift()]: values.shift(),
+  [keys.shift()]: values.shift(),
+}
 ```
 
 # Module_10 Promises
 
-The Promises object represents the eventual completion (or failure) of an
-asynchronous operation, and its resulting value. 
+The Promises object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+
+A Promise will return a value between now and the end of time. 
+
+A Promise can have 3 States : 
+
+    - Pending : Initial state, neither fulfilled or rejected.
+    - Fulfilled : Operation completed successfully.
+    - Rejected : Operation failed.
+
+A pending Promise can eiter be fulfilled with a return value, or rejected with a reason (Error).
+
+Javascript is a single threaded, bits of scripts can't run
+at the same time, they have to run one after another. Javascript share a thread with the same queue as painting, updating styles and event handling. One of the activity will dealy the others one.
+
+asynchronous : In programming, asynchronous events are those occuring independently of the main program flow.
 
 ```javascript
-
 // Fetching data using fetch that implement a Promise
-const mtlwifi_bornes = `http://donnees.ville.montreal.qc.ca/dataset/08f12925-c6b2-405f-bd01-744674d97bff/resource/11860f23-30c9-4221-ae00-a39af4684210/download/mtlwifi_bornes.geojson`
-const response = fetch(mtlwifi_bornes)
-
-response.then(data => data.json())
-        .then(data => { console.log(data) })
-        .catch((err) => {
-          console.error(err)
+const MTLWIFI = `http://donnees.ville.montreal.qc.ca/dataset/08f12925-c6b2-405f-bd01-744674d97bff/resource/11860f23-30c9-4221-ae00-a39af4684210/download/mtlwifi_bornes.geojson`
+const response = fetch(MTLWIFI)
+                    .then(data => data.json()) // convert into desired format
+                    .then(data => { console.log(data) })
+                    .catch((err) => {
+                      console.error(err)
   })
-
-// Build my own Promises
+```
+  Build my own Promises
+```javascript
 const p = new Promise((resolve, reject) => {
   // resolve(`Seb is Cool`)
   setTimeout(() => {
     reject(Error (`Err Seb is not that Cool`))
   }, 1000)
 }) 
+
 p.then(data => {
     console.log(data)
 }).catch( err => {
     console.error(err)
 })
-
-// 
-
 ```
 # Module_11 
 
@@ -500,16 +520,19 @@ Array.findIndex() : The findIndex() method returns the index of the first elemen
 
 Array.of() : The Array.of() method creates a new Array instance with a variable number of arguments, regardless of number or type of the arguments.
 
+asynchronous : In programming, asynchronous events are those occuring independently of the main program flow.
+              Ex :Ajax call, can retrieve data from server asynchronously in the background without stoping the main thread of the browser.  
 
-const : 
+const : Variables constante
 
 debugger : The debugger statement invokes any available debugging functionality, such
           as setting a breakpoint. If no debugging functionality is available, this
           statement has no effect.
 
-
 entries() : Array.prototype.entries() : The entries() method returns a new Array
             Iterator object that contains the key/value pairs for each index in the array.
+
+fetch() :  This method takes one mandatory argument, the path of the resource to fetch. It returns a Promise that resolve to a Response.
 
 
 let :  
