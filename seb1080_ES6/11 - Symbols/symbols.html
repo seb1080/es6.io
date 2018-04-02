@@ -9,19 +9,20 @@
   const wes = Symbol('Wes');
   const person = Symbol('Wes');
 
-  const classRoom = {
-    [Symbol('Mark')] : { grade: 50, gender: 'male' },
-    [Symbol('olivia')]: { grade: 80, gender: 'female' },
-    [Symbol('olivia')]: { grade: 80, gender: 'female' },
-  };
+const sym1 = Symbol()
+const sym2 = Symbol(2)
+const symStr = Symbol('foo') // the param is a Descriptor
 
-  for (const person in classRoom) {
-    console.log(person);
-  }
+const classRoom = {
+  [Symbol(`Frederik`)]: {grade: 100, gender: `male`},
+  [Symbol(`Frederik`)]: {grade: 78, gender: `female`}
+}
 
-  const syms = Object.getOwnPropertySymbols(classRoom);
-  const data = syms.map(sym => classRoom[sym]);
-  console.log(data);
+const syms = Object.getOwnPropertySymbols(classRoom)
+console.log(syms)
+const data = syms.map(sym => classRoom[sym])
+console.log(data)
+
 
 </script>
 </body>

@@ -516,13 +516,54 @@ Promise.all([p1,p2]).then( responses => {
   const [wheater, tweet] = responses
   console.log( `responses : `, wheater, responses, tweet)
 })
+```
+# Module_11 Symbol
 
+A symbol value may be used as an identifier, but symbol are not enumerabal it is not possible to loop over them.
+Every symbol value returned from Symbol() is unique.
+
+Actual data type : Number, String, Object, boolean, Null, undefined and new ES6 Symbol
+
+
+```javascript
+const sym1 = Symbol()
+const sym2 = Symbol(2)
+const symStr = Symbol('foo') // the param is a Descriptor
+
+const classRoom = {
+  [Symbol(`Frederik`)]: {grade: 100, gender: `male`},
+  [Symbol(`Frederik`)]: {grade: 78, gender: `female`}
+}
+
+const syms = Object.getOwnPropertySymbols(classRoom)
+console.log(syms)
+  // Display the values sof the ClassRoom
+const data = syms.map(sum => classRoom[sym])
+console.log(data)
 ```
 
+# Module_12 Code Quality with EsLint
 
 
-# Module_11 
 
+# Module_13 Javasript Modules and Using npm
+
+
+# Module_14 ES6 Tooling
+
+# Module_15 Classes
+
+# Module_16 Generators
+
+# Module_17 Proxies
+
+# Module_18 Sets and WeakSets
+
+# Module_19 Map and Weak Map
+
+# Module_20 Async + Await Flow Control
+
+# Module_21 ES7, ES8 + Beyond
 
 
 # Glossary
