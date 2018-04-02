@@ -415,6 +415,9 @@ function  calCurrency(rate, ...amounts){
   ```
 # Module_9 Object Literal Upgrades
 
+Object can be initialized using New Object(), Object.create(), or Literal notation.
+Objects consist of properties, wich are used to describe an object. Values of object properties can either contain primitive data types or other objects.
+
 ```javascript
 
 const fName = 'Seb', lName = 'Blais', age = 11, job = `Web Dev`
@@ -429,8 +432,10 @@ const modal = {
 }
 
 const key = 'superLongPropertyName'
+const value = {}
 const tShirt = {
-  [key]: value,
+  // Computed property names
+  [key]: `value`,
   [`${key} + constructor`]: function() {},
   [`${key} + update`]: value
 }
