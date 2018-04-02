@@ -1,27 +1,21 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Chaining Promises</title>
 </head>
 <body>
+
+<script src="./data/policeStations.geojson"></script>
+<script src="./data/policeAreas.geojson"></script>  
 <script>
 
 
 async function main() {
   // ref : http://donnees.ville.montreal.qc.ca/dataset/carte-postes-quartier
-  const policeStationURL = `http://donnees.ville.montreal.qc.ca/dataset/91f66001-b461-4f63-aff4-cddc0fe30ffe/resource/c9d0b8d6-c7a6-4766-a5cc-98e8b1392bbc/download/pdq_point.geojson`
   // ref : http://donnees.ville.montreal.qc.ca/dataset/limites-pdq-spvm
-  const policeAreaURL = `http://donnees.ville.montreal.qc.ca/dataset/186892b8-bba5-426c-aa7e-9db8c43cbdfe/resource/e18f0da9-3a16-4ba4-b378-59f698b47261/download/limitespdq.geojson`
-
-  let policeStation = {}, policeArea = {}
-
-
-  policeStation = await fetchURl(policeStationURL)
-  policeArea = await fetchURl(policeAreaURL)
-
-  console.log(`policeStation : `, policeStation)
-  console.log(`policeArea : `, policeArea)
+  
+  console.log(`policeStation : `, policeStations)
+  console.log(`policeArea : `, policeAreas)
   
 
   // Hydratation of the 2 datasets
@@ -43,6 +37,15 @@ async function fetchURl(url) {
       }
   }
 
+
+// the goal is to include the police Station into the policeArea dataset
+// hydratePoliceData(policeStation, policeArea) {
+//   return new Promise(resolve, reject) => {
+//     const policeSationDetails = policeArea.features.find( area => {
+//       area.properties.No_PDQ === policeStation.features.properties.DESC_LIEU.split(' ')
+//     })
+//   }
+// }
 
 
 }
