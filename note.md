@@ -558,9 +558,58 @@ import { apiKey as key,  old, dog } from './src/config'
 ```
 # Module_14 ES6 Tooling
 
+### Webpack
+
+Webpack is a static module bundler for modern JavaScript applications.
+
+[System.js](https://github.com/systemjs/systemjs) is a great lib that allow you 
+to config module loader dynamicaly ES module worflows in the browsers and NodeJS.
+Really handy for prototyping, don't use for production. 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>System JS</title>
+</head>
+<body>
+  <h1>Browser-sync is a create Tool</h1>
+  <script src="https://jspm.io/system@0.19.js"></script>
+  <script>
+    System.config( { transpiler: 'babel'} )
+    System.import('./main.js')
+  </script>
+</body>
+</html>
+```
+```js
+// main.js
+import { sum, kebabCase } from 'npm:lodash'
+import { calculTip } from './costumModule'
+
+console.log(kebabCase('Seb is becoming a better Web Dev'))
+const amount = 14
+const taxRate = 0.13
+document.write(calculTip(amount, taxRate))
+```
+```js
+// customModule.js
+export function calculTip(amount, taxRate) {
+    return amount + (amount * taxRate)
+}
+```
+
+### Babel
+
+
+### Polyfill
 
 
 # Module_15 Classes
+
+
+
+
 
 # Module_16 Generators
 
