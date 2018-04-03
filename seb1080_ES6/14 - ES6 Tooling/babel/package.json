@@ -1,0 +1,25 @@
+{
+  "name": "babel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "babel": "babel app.js --watch --out-file app-compiled.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^7.0.0-beta.3"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env", {
+        "targets": {
+          "browsers": ["last 2 versions", "safari >= 7"]
+        }
+      }]
+    ]
+  }
+}
