@@ -12,7 +12,7 @@ Ref : [wesbos](https://courses.wesbos.com/account/)
 var : The scope of var is the enclosing function scope or the global scope.
       var can be update.
 
-```javascript
+```js
 var width = 10
 var width = 30 // var can be reassign
     width = 23 // var can be update
@@ -31,7 +31,7 @@ let : can be update, mutable
 
 const : can not be update, mutable
 
-```javascript
+```js
 let width = 12
 let width = 34 // error can't be reassign
 
@@ -57,8 +57,7 @@ ref: (https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/)
   Arrow functions are anonymous function that don't have it own this, arguments, super, new.target.
 
 
-```javascript
-
+```js
 // Implicite return
 const arr2 = numbers.map(number => `${number} arr2`)
 console.log(arr2)
@@ -88,7 +87,7 @@ console.table(win)
 
 The arrow  functions should not be use for : 
 
-```javascript
+```js
 // To handle click event
   button.# Templating StringaddEventListener('click', function() {
     console.log(this)
@@ -135,7 +134,7 @@ The arrow  functions should not be use for :
 ```
 ### Default argument
 
-```javascript
+```js
 function calculateBill(total, tax =0.13, tip=0.15) {
   return total * tax + total * tip 
 }
@@ -143,7 +142,7 @@ function calculateBill(total, tax =0.13, tip=0.15) {
 
 # Module_3 Templating String
 
-```javascript
+```js
 const string = `string`
 
 const temString = ` template ${string} 
@@ -171,7 +170,7 @@ const dogs = [
 
 ### Tagging Template string
 
-```javascript
+```js
 function tagging(strings, ...values) {
   let str = ``
   strings.forEach((string, i) => {
@@ -188,7 +187,7 @@ document.body.innerHTML =  sentence
 
 # Module_4 Additional String Imporvements
 
-```javascript
+```js
 const str = `newString`
 
 str.startsWith('new') // true
@@ -208,8 +207,7 @@ Destructuring allow to extract properties, key from a object, map, set into a va
 
 ## Destructuring Object
 
-```javascript
-
+```js
 const object = {
   prop1: 'Seb',
   prop2: 'Blais'
@@ -250,8 +248,7 @@ const seb = {
 
 ## Destructuring Array
 
-```javascript
-
+```js
 const arr = ['Seb Blais', 233223, 'seb.com']
 
 const [name, id, website] = arr; // Destructuring Array
@@ -267,8 +264,7 @@ const [capitain, assistant, ...marins] = team // Rest Operator
 
 ## Swapping variables
 
-```javascript
-
+```js
 let var1 = 'variable1', var2 = 'variable1'
 
 [var1, var2] = [var2, var1] // Swapping variables
@@ -276,8 +272,7 @@ let var1 = 'variable1', var2 = 'variable1'
 
 ## Destructuring Functions
 
-```javascript
-
+```js
 function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
     return total + (tip * total) + (tax * total);
   }
@@ -288,10 +283,9 @@ const bill = tipCalc({ tip: 0.20, total: 200 })
 
 # Module_6 Iterables & Looping
 
-## Existing Loopin in javascript
+## Existing Loopin in js
 
-```javascript
-
+```js
 const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib']
 
 // Before ES6
@@ -327,8 +321,7 @@ for(const cut of cuts){
 
 # Module_7 An Array of Array Improvements
 
-```javascript
-
+```js
 // Array.from()
 const nodeList = document.querySelectorAll('.items p')
 const itemsArray = Array.from(nodeList, item => {
@@ -378,8 +371,7 @@ let allMajor = ages.every(age => (age >= 18) ) // false
 
 ...Spread syntax allows an iterable to be expendanded where zero or more arguments are expected. It will apply a array as a individual elements.
 
-```javascript
-
+```js
   const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian']
   const specialty = ['Meatzza', 'Spicy Mama', 'Margherita']
   const friends = ['friend1','friend2','friend3']
@@ -407,7 +399,7 @@ let allMajor = ages.every(age => (age >= 18) ) // false
   The rest parameter allows us to represent an indefinite number of arguments as an array.
 
 
-  ```javascript
+  ```js
                               // take amounts has a array
 function  calCurrency(rate, ...amounts){
   return amounts.map( amount => amount * rate)
@@ -418,8 +410,7 @@ function  calCurrency(rate, ...amounts){
 Object can be initialized using New Object(), Object.create(), or Literal notation.
 Objects consist of properties, wich are used to describe an object. Values of object properties can either contain primitive data types or other objects.
 
-```javascript
-
+```js
 const fName = 'Seb', lName = 'Blais', age = 11, job = `Web Dev`
 
 const person = { fName, lName, age, job} // Object Literal,
@@ -467,12 +458,12 @@ A Promise can have 3 States :
 
 A pending Promise can eiter be fulfilled with a return value, or rejected with a reason (Error).
 
-Javascript is a single threaded, bits of scripts can't run
-at the same time, they have to run one after another. Javascript share a thread with the same queue as painting, updating styles and event handling. One of the activity will dealy the others one.
+js is a single threaded, bits of scripts can't run
+at the same time, they have to run one after another. js share a thread with the same queue as painting, updating styles and event handling. One of the activity will dealy the others one.
 
 asynchronous : In programming, asynchronous events are those occuring independently of the main program flow.
 
-```javascript
+```js
 // Fetching data using fetch that implement a Promise
 const MTLWIFI = `http://donnees.ville.montreal.qc.ca/dataset/08f12925-c6b2-405f-bd01-744674d97bff/resource/11860f23-30c9-4221-ae00-a39af4684210/download/mtlwifi_bornes.geojson`
 const response = fetch(MTLWIFI)
@@ -483,7 +474,7 @@ const response = fetch(MTLWIFI)
   })
 ```
   Build my own Promises
-```javascript
+```js
 const p = new Promise((resolve, reject) => {
   // resolve(`Seb is Cool`)
   setTimeout(() => {
@@ -500,7 +491,7 @@ p.then(data => {
 
 Promise.all(iterable) method returns a single Promise that resolve when all of the promises in the iterable argument have resolved or when the iterable argument contains no promises. 
 
-```javascript
+```js
 const p1 = new Promise((resolve) => { 
     setTimeout( () => { 
       resolve( { temp: 20, location: `Montreal` } )
@@ -525,7 +516,7 @@ Every symbol value returned from Symbol() is unique.
 Actual data type : Number, String, Object, boolean, Null, undefined and new ES6 Symbol
 
 
-```javascript
+```js
 const sym1 = Symbol()
 const sym2 = Symbol(2)
 const symStr = Symbol('foo') // the param is a Descriptor
@@ -544,9 +535,28 @@ console.log(data)
 
 # Module_12 Code Quality with EsLint
 
-
+  Use EsLint
 
 # Module_13 Javasript Modules and Using npm
+
+A Javascript code module is simply some JS code located in a registered location.
+
+The export statement allow to export functions, objects, primitive values, from a module. 
+```js
+// file config.js 
+export const CONSTANT = 234242
+export const str = `sfsdfsdfdsfsdf`
+export newFunc function() { return true }
+```
+The import statement allw to import bindings which are exported by another module.
+```js
+// app.js
+import { _ } from 'lodash'
+import insane from 'insane'
+
+import { apiKey as key,  old, dog } from './src/config'
+
+```
 
 
 # Module_14 ES6 Tooling
@@ -568,7 +578,7 @@ console.log(data)
 
 # Glossary
 
-```javascript
+```js
 
 ```
 
