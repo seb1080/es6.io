@@ -555,11 +555,10 @@ import { _ } from 'lodash'
 import insane from 'insane'
 
 import { apiKey as key,  old, dog } from './src/config'
-
 ```
-
-
 # Module_14 ES6 Tooling
+
+
 
 # Module_15 Classes
 
