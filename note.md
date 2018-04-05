@@ -537,7 +537,7 @@ console.log(data)
 
   Use EsLint
 
-# Module_13 Javasript Modules and Using npm
+# Module_13 Javasript Modules and using npm
 
 A Javascript code module is simply some JS code located in a registered location.
 
@@ -601,6 +601,11 @@ export function calculTip(amount, taxRate) {
 
 ### Babel
 
+Babel is a JS compiler, it has 3 stages that it runs code in: parsing, transforming, and generation.
+
+Babel use JS plugins to convert the latest and greatest
+version of ES into older browser supported JS. A preset is a collection
+of plugin.
 
 ### Polyfill
 
