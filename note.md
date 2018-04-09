@@ -251,7 +251,7 @@ const seb = {
 ```js
 const arr = ['Seb Blais', 233223, 'seb.com']
 
-const [name, id, website] = arr; // Destructuring Array
+const [name, id, website] = arr // Destructuring Array
 
 const data = 'aaaaaaaaaa,bbbbbbbbb,cccccccc,ddd'
 
@@ -274,7 +274,7 @@ let var1 = 'variable1', var2 = 'variable1'
 
 ```js
 function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
-    return total + (tip * total) + (tax * total);
+    return total + (tip * total) + (tax * total)
   }
   
 // Arguments can't be pass in a different oroder
@@ -290,7 +290,7 @@ const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib']
 
 // Before ES6
 // Confusing syntax
-for(let i =0; i< cuts.length i++){
+for(let i =0 i< cuts.length i++){
   console.log(cuts[i])
 }
 // Can't be abord the loop, can't use rthe break keyword
@@ -388,7 +388,7 @@ let allMajor = ages.every(age => (age >= 18) ) // false
     pizzaName: 'Deep Dish',
     size: 'Medium',
     ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
-  };
+  }
 
   const arr = ['Milk', 'Flour', ...deepDish.ingredients]
   // Create a new Array 'arr' not the reference to deepDish.ingredients
@@ -612,28 +612,328 @@ of plugin.
 
 # Module_15 Classes
 
+Review the pre ES2015 syntax for prototype.based Object.
+```js
+// Building a Dog prototype 
+  function Dog(name, breed) {
+    this.name = name
+    this.breed = breed
+  }
+  // Adding methods to Dog
+  Dog.prototype.bark = function() {
+    console.log(`Bark Bark! My name is ${this.name}`)
+  }
+  // Declaring a instance of Dog
+  const snoopy = new Dog('snoopy', 'King Charles')
+```
+
+ES6 Js Classes are syntactical sugar over prototype-based inheritance.
+```js
+class Dog {
+  constructor(name, breed) {
+    this.name = name
+    this.breed = breed
+  }
+  bark() {
+    console.log(`Bark Bark! My name is ${this.name}`)
+  }
+    // Static methods calls are made directly on the
+    // class and are not callable on instances of the class.
+  static info() {
+    console.log(`A dog is better than a cat by 10 times`)
+  }
+  // computed property
+  get description() {
+    return `${this.name} is a ${this .breed}`
+  }
+  set nicknames(value){
+    this.nick = value.trim()
+  }
+  get nicknames(){
+    return this.nick.toUpperCase()
+  }
+}
+```
+  Static method calls are made directly on the class and
+  not callable on instance of the class. Static methods are ofthen used to create utility functions.
+
+Extending a Class into a new Class
+```js
+class Animal {
+    constructor(name) {
+      this.name = name
+      this.thirst = 100
+      this.belly = []
+    }
+    drink() {
+      this.thirst -= 10
+      return this.thirst
+    }
+    eat(food) {
+      this.belly.push(food)
+      return this.belly
+    }
+  }  
+  class Dog extends Animal {
+    constructor(name, breed) {
+      super(name) // Call the parent Class first
+      this.breed = breed
+    }
+    bark() {
+      console.log('Bark bark I\'m a dog')
+    }
+  }
+```
 
 
-
-
+Extending the Array Object 
+```js
+class MovieCollection extends Array {
+    constructor(name, ...items) {
+      super(...items) // Same thing as calling new Array(...items)
+      this.name = name
+    }
+    add(movie) {
+      this.push(movie)
+    }
+    topRated(limit = 10) {
+      return this.sort((a, b) => (a.stars > b.stars ? -1 : 1)).slice(0, limit)
+    }
+  }
+  const movies = new MovieCollection('Wes\'s Fav Movies',
+    { name: 'Bee Movie', stars: 10 },
+    { name: 'Star Wars Trek', stars: 1 },
+    { name: 'Virgin Suicides', stars: 7 },
+    { name: 'King of the Road', stars: 8 }
+  )
+```
 # Module_16 Generators
 
+The Generator object is returned by a generator function and it conforms to both the iterable protocol and the iterator protocol.
+
+
+```js
+  const inventors = [
+    { first: 'Albert', last: 'Einstein', year: 1879 },
+    { first: 'Isaac', last: 'Newton', year: 1643 },
+    { first: 'Galileo', last: 'Galilei', year: 1564 },
+    { first: 'Marie', last: 'Curie', year: 1867 },
+    { first: 'Johannes', last: 'Kepler', year: 1571 },
+    { first: 'Nicolaus', last: 'Copernicus', year: 1473 },
+    { first: 'Max', last: 'Planck', year: 1858 },
+  ]
+
+  function* loop(arr) {
+    console.log(inventors)
+    for (const item of arr) {
+      yield item // act has a return statement
+    }
+  }
+  const inventorGen = loop(inventors)
+
+  inventorGen.next().value // to be call
+```
+Generator can be usefull for multi fetching calls.
+
+```js
+  function ajax(url) {
+    fetch(url).then(data => data.json()).then(data => dataGen.next(data))
+  }
+
+  function* steps() {
+    console.log('fetching beers')
+    const beers = yield ajax('http://api.react.beer/v2/search?q=hops&type=beer')
+    console.log(beers)
+
+    console.log('fetching wes')
+    const wes = yield ajax('https://api.github.com/users/wesbos')
+    console.log(wes)
+
+    console.log('fetching fat joe')
+    const fatJoe = yield ajax('https://api.discogs.com/artists/51988')
+    console.log(fatJoe)
+  }
+
+  const dataGen = steps()
+  dataGen.next() // kick it off
+```
 # Module_17 Proxies
 
-# Module_18 Sets and WeakSets
+The Proxy object is used to define custom behavior for fundamental operations. Proxy allow to overwright default behavior of default Object.
 
-# Module_19 Map and Weak Map
+```js 
 
-# Module_20 Async + Await Flow Control
+const person = { name: `Seb`, age : 99}
+const personProxy = new Proxy(person, {
 
-# Module_21 ES7, ES8 + Beyond
+})
+```
 
+# Module_18 Set and WeakSet
 
-# Glossary
+The Set object lets you store unique values of any type, whether primitive values or object references.
+
+In a Set the key and the value are the exact same thing.
+All the key-value in a Set are unique.
+
+```js
+const group = new Set()
+
+group.add('Seb')
+group.add('Natasha')
+group.add('Niki')
+
+group.values() // will return a SetIterator {}
+```
+
+The Weakset object lets you store weakly held objects in a collection.
+
+The WeakSet contain only Objects, there is not iterable on a WeakSet. The WeakSet don't have a clear() method, because the Weakset clean it self up.
 
 ```js
 
+let dog1 = {name: `snoopy`, age: 3}
+let dog2 = {name: `doggy`, age: 1}
+
+const weakSauce = new WeakSet([dog1, dog2])
 ```
+
+# Module_19 Map and WeakMap
+
+The Map object holds a key-values pairs. Any data Structure
+(both objects and primitives values) may abe used as either a key of a value.
+
+The advantage of a Map() over a regular Object is that the map key can be all type of data structure.
+
+```js
+const dogs = new Map()
+
+dogs.set(`snoopy`, 3)
+dogs.set(`Summy`, 2)
+dogs.set(`Hugo`, 6)
+```
+WeakMap object is a collection of key/value pairs in which
+the keys are weakly referenced.The keys must be objects and the values can be arbitrary values.
+
+WeakMap do not have a size.
+
+```js
+  let dog1 = { name: 'Snickers', age: 3 }
+  let dog2 = { name: 'sunny', age: 1 }
+
+  const weakSauce = new WeakSet([dog1, dog2])
+
+  console.log(weakSauce)
+  dog1 = null
+  console.log(weakSauce)
+```
+# Module_20 Async + Await Flow Control
+
+The async function declaration defines an asynchronous function, which returns an AsyncFunction object.
+
+```js
+function resolveAfterSec(nbSec) {
+  return new Promise(resolve => {
+    setTimeout(  () => {
+      resolve('resolved')
+    }, nbSec)
+  })
+}
+async function asyncCall(){
+  const nbSec = 10 // sec
+  const result = await resolveAfterSec(nbSec)
+  console.log(result)   
+}
+asyncCall()
+```
+
+Promisify of a Call Back
+
+```js 
+navigator.geolocation.getCurrentPosition(function (pos) {
+      console.log('it worked!');
+      console.log(pos);
+    }, function (err) {
+      console.log('it failed!');
+      console.log(err);
+    });
+
+    function getCurrentPosition(...args) {
+      return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(...args, resolve, reject);
+      });
+    }
+
+    async function go() {
+      console.log('starting');
+      const pos = await getCurrentPosition();
+      console.log(pos);
+      console.log('finished');
+    }
+    go()
+```
+
+# Module_21 ES7, ES8 + Beyond
+
+Class Properties, padStart(), padEnd(), ES7 Exponential Operator,
+Function Arguments trailing Comma, Object.entries(), Object.values()
+
+```js
+
+// Class Properties
+class Dog() {
+  constructor(name, breed) {
+    this.name = name
+    this.breed = breed
+  }
+  barks = 0 // new ES7 features
+}
+
+// padStart & padEnd
+const seb = `Seb`
+seb.padStart(12, `**`) // nb Caratere, padding caractere 
+
+// ES7
+Array.includes(`str`)
+
+3 ** 3 = 27 // Exponential Operator 
+2 ** 2 ** 2 = 16
+
+
+// Comma trailing
+const names = ['seb', 'wes', 'bos',]
+
+const people = {
+  seb: 'dev',
+  wes: 'Cool',
+  poppy: 'doggy', // Comma trailing
+}
+
+const inventory = {
+  jeans: 23,
+  shorts: 56,
+  hoodies: 31,
+}
+
+// entries() : returns an array of a given object
+// own enumerable property[key, value]
+Object.entries(inventory)
+
+const nav = Object.keys(inventory).map(item => `<li>${item}</li>`).join('')
+
+// Object.values() : returns an array of a given object's own enumarable property values.
+const totalInventory = Object.values(inventory).reduce( (a,b) => a + b) 
+
+Object.entries(inventory).forEach( [key, val] => {
+  console.log(key, val)
+})
+```
+
+
+
+
+
+# Glossary
 
 arguments : Aguments is Array-like object corresponding to the arguments passed to a function.
 
@@ -664,3 +964,11 @@ fetch() :  This method takes one mandatory argument, the path of the resource to
 
 
 let :  
+  let dog1 = { name: 'Snickers', age: 3 }
+  let dog2 = { name: 'sunny', age: 1 }
+
+  const weakSauce = new WeakSet([dog1, dog2])
+
+  console.log(weakSauce)
+  dog1 = null
+  console.log(weakSauce)
